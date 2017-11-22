@@ -12,9 +12,9 @@ const Header = () =>
             <span className="icon-bar" />
           </button>
           <a href="/" className="navbar-brand">
-             React NYT
+             NYT React Edition
           </a>
-          <ul class="nav navbar-nav">
+          <ul className="nav navbar-nav">
             <li role="presentation" className="active"><a href="/api/search">Search</a></li>
             <li role="presentation"><a href="/api/saved">Saved Articles</a></li>
           </ul>
@@ -25,8 +25,8 @@ const Header = () =>
 
   <div className='container'>
     <div className="jumbotron">
-       <h1>
-        NYT React
+       <h1 className='text-center'>
+        New York Times React Edition
        </h1>
     </div>
   </div>

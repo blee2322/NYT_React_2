@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SavedArticle = props =>
+const Article = props =>
 
 <div className="card">
     <div className="card-block">
@@ -10,9 +10,9 @@ const SavedArticle = props =>
       <a href={props.url} target='_blank'>
         <button className='btn btn-default' href={props.url}>View Article</button>
       </a>
-      <button className='btn btn-primary'>Delete Article</button>
-      <p>Date Published: {props.published}</p>
+      <button className='btn btn-primary' onClick= {props.handleSaveArticle}>Save Article</button>
+      <p>Date Published: {props.published} </p>
     </div>
   </div>
 
-export default SavedArticle;
+export default Article;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import API from '../../utils/Api';
+import Results from '../Results'
 
 class Search extends Component {
 
@@ -7,8 +9,32 @@ class Search extends Component {
     startYear: '',
     endYear: '',
     articles: [],
-    saved: []
-  };
+  }
+
+  handleTopicChange = (event) => {
+    this.setState({ topic: event.target.value });
+  }
+
+  handleStartYearChange = (event) => {
+    this.setState({ startYear: event.target.value });
+  }
+
+  handleEndYearChange = (event) => {
+    this.setState({ endYear: event.target.value });
+  }
+
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    API.search(this.state.topic, this.state.startYear, this.state.endYear)
+    .then((res) => {
+      console.log(res);
+      this.setState({ articles: res.data.response.docs})
+    })
+  }
+
+  handleSaveArticle = (event) => {
+    
+  }
 
   render() {
 
@@ -29,17 +55,17 @@ class Search extends Component {
                   <form>
                     <div className='form-group'>
                         <label>Topic</label>
-                        <input onChange= 'topic handler' type='text' className='form-control' id='topic' />
+                        <input onChange= {this.handleTopicChange} type='text' className='form-control' id='topic' />
                     </div>
                     <div className='form-group'>
                         <label>Start Year</label>
-                        <input onChange= 'start year handler' type='text' className='form-control' id='startyear' />
+                        <input onChange= {this.handleStartYearChange} type='text' className='form-control' id='startyear' />
                     </div>
                     <div className='form-group'>
                         <label>End Year</label>
-                        <input onChange='end year handler' type='text' className='form-control' id='endyear' />
+                        <input onChange= {this.handleEndYearChange} type='text' className='form-control' id='endyear' />
                     </div>
-                    <button onClick='submit handler' type='submit' className='btn btn-primary'>Search</button>
+                    <button onClick={this.handleFormSubmit} type='submit' className='btn btn-primary'>Search</button>
                   </form>
                 </div>
               </div>
@@ -48,7 +74,18 @@ class Search extends Component {
         </div>
 
         <br/><br/>
+
+      {this.state.articles ? ( 
+        <Results
+        articles = {this.state.articles}
+        onSave = {this.handleSaveArticle}
+        />
+        ):(
+        <h3>No Results to Display</h3>
+      )}
       </div>
+
+
 
     );
   }
