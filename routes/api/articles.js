@@ -7,6 +7,10 @@ const articlesController = require("../../controllers/articlesController");
 // Happy Thanks Giving :)
 router.route("/")
   .get(articlesController.findAll)
-  .post(articlesController.create);
+  .post(articlesController.create)
+  
+
+router.route('/:id')
+.delete(articlesController.remove)
 
 module.exports = router;

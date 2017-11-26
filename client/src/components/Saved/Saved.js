@@ -8,15 +8,19 @@ class Saved extends Component{
   }
 
   componentDidMount(){
+    this.loadArticles();
+  }
+
+  loadArticles = () => {
     API.getSavedArticles()
     .then(res => {
       console.log("result", res)
       this.setState({savedArticles: res.data})
       })
     .catch(err => console.log(err));
-  };
+  }
 
-  render(){
+  render() {
     return(
       <div>
         <div className="container">
@@ -33,6 +37,9 @@ class Saved extends Component{
                     published = {article.publishedDate}
                     url = {article.url}
                     key = {article._id}
+                    saved = {true}
+                    id ={article._id}
+                    loadArticles = {this.loadArticles}
                   />
                 ))) 
                 : (<h3>No Saved Articles</h3>)

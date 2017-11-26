@@ -21,6 +21,7 @@ const Results = props =>
             published = {article.pub_date}
             url = {article.web_url}
             key = {index}
+            saved = {false}
           />
           ))
         }
