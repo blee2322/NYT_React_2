@@ -1,18 +1,48 @@
-import React from 'react';
+import React, { Component } from "react";
+import API from '../../utils/API';
+import Article from '../Article'
 
-const SavedArticle = props =>
+class Saved extends Component{
+  state = {
+    savedArticles : []
+  }
 
-<div className="card">
-    <div className="card-block">
-      <h3 className="card-title">
-      {props.headline}
-      </h3>
-      <a href={props.url} target='_blank'>
-        <button className='btn btn-default' href={props.url}>View Article</button>
-      </a>
-      <button className='btn btn-primary'>Delete Article</button>
-      <p>Date Published: {props.published}</p>
-    </div>
-  </div>
+  componentDidMount(){
+    API.getSavedArticles()
+    .then(res => {
+      console.log("result", res)
+      this.setState({savedArticles: res.data})
+      })
+    .catch(err => console.log(err));
+  };
 
-export default SavedArticle;
+  render(){
+    return(
+      <div>
+        <div className="container">
+          <div className="panel panel-primary">
+            <div className="panel-heading">
+              Saved Articles
+            </div>
+            <div className="panel-body">
+              {
+                this.state.savedArticles ? 
+                (this.state.savedArticles.map ((article) => (
+                  <Article 
+                    headline = {article.headLine}
+                    published = {article.publishedDate}
+                    url = {article.url}
+                    key = {article._id}
+                  />
+                ))) 
+                : (<h3>No Saved Articles</h3>)
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Saved;

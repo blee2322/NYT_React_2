@@ -1,35 +1,30 @@
-import React from 'react'
+import React from "react";
 
 const Header = () => 
-<div>
-  <div className='container'>
-    <nav className="navbar navbar-inverse navbar-top">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <button type="button" className="collapsed navbar-toggle">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar" /> <span className="icon-bar" />
-            <span className="icon-bar" />
-          </button>
-          <a href="/" className="navbar-brand">
-             NYT React Edition
-          </a>
-          <ul className="nav navbar-nav">
-            <li role="presentation" className="active"><a href="/api/search">Search</a></li>
-            <li role="presentation"><a href="/api/saved">Saved Articles</a></li>
-          </ul>
-        </div>
+<div className="container">
+  <nav className="navbar navbar-inverse navbar-top">
+    <div className="container-fluid">
+      <div className="navbar-header">
+        <a href="/" className="navbar-brand">NYT-React</a>
+        <ul className="nav navbar-nav navbar-right">
+          <li className="nav-item">
+            <a className="nav-link" href="/search">Search</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/saved">Saved Articles</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
 
-  <div className='container'>
+  <div>
     <div className="jumbotron">
-       <h1 className='text-center'>
-        New York Times React Edition
-       </h1>
+    <h1>NYT-React</h1> 
+    <p>New York Times Articles</p> 
     </div>
   </div>
+
 </div>;
 
 export default Header;
