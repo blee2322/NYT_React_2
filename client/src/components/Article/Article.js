@@ -13,7 +13,7 @@ handleSaveArticle = event => {
     headLine: this.state.headline,
     url: this.state.url,
     publishedDate: this.state.published
-  });
+  })
 }
 
 handleRemoveArticle = event => {
